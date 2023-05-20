@@ -16,16 +16,16 @@
 사용 예시는 다음과 같다. <[백준 14425번](https://www.acmicpc.net/problem/14425) | [내 풀이](https://www.acmicpc.net/source/60915913)>
 ```c++
 bool binary_search(std::vector<std::string>& v, std::string& str, int first, int last) {
-    int mid = (first + last) / 2;
+    int mid = (first + last) / 2; 
     while(first <= last) {
-        if (v[mid] == str)
-            return true;
-        else if (v[mid] > str) {
+        if (v[mid] == str) 
+            return true; // 배열의 중간값이 찾는 값일 경우.
+        else if (v[mid] > str) { // 배열의 중간값이 찾는 값이 아니고, 그 값이 찾는 값보다 작을 경우.
             last = mid - 1;
-            mid = (first + last) / 2;
-        } else {
+            mid = (first + last) / 2; // 배열의 시작 값은 그대로 하고, 마지막 값을 mid - 1로 변경 후 다시 시행. 
+        } else { // 배열의 중간값이 찾는 값이 아니고, 그 값이 찾는 값보다 클 경우.
             first = mid + 1;
-            mid = (first + last) / 2;
+            mid = (first + last) / 2; // 배열의 시작 값을 mid + 1로 하고, 마지막 값은 그대로 둔 후 다시 시행.
         }
     }
     return false;
