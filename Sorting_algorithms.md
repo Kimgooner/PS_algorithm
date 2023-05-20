@@ -19,22 +19,22 @@
 
 int main() {
     std::ios_base::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+    std::cin.tie(nullptr); // 빠른 입출력
 
     int N;
     std::cin >> N;
-    int data[10001] = {0}; // 
+    int data[10001] = {0}; // 인덱스가 0~10000이고 각 인덱스의 값이 0인 카운트 배열 생성.
 
     int input;
     for(int i = 0; i < N; i++){
         std::cin >> input;
-        data[input]++;
+        data[input]++; // 카운트 배열에 각 인덱스에 해당하는 수가 등장한 횟수 입력.
     }
 
     for(int i = 1; i < 10001; i++){
         if(data[i] != 0){
             for(int j = 0; j < data[i]; j++){
-                std::cout << i << "\n";
+                std::cout << i << "\n"; // 누적 카운트 배열을 생성하는 대신에, 횟수만큼 출력을 반복하는 방식으로 대체함.
             }
         }
     }
