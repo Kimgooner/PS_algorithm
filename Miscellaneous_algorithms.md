@@ -35,7 +35,7 @@ int Euclidean(long long int a, long long int b){ // 재귀함수를 사용.
 2.  idx가 2 <= idx <= sqrt(배열의 최댓값) 이라고 할때, 배열의 수 % idx == 0인 값들을 모두 지운다.
 3.  배열의 남은 값들이 소수이다.
 
-사용 예시는 다음과 같다. <[백준 1929번](https://www.acmicpc.net/problem/17103) | [내 풀이](https://www.acmicpc.net/source/61068430)>
+사용 예시는 다음과 같다. <[백준 17103번](https://www.acmicpc.net/problem/17103) | [내 풀이](https://www.acmicpc.net/source/61068430)>
 ```cpp
 ...
 
