@@ -28,41 +28,24 @@ int Euclidean(long long int a, long long int b){ // 재귀함수를 사용.
 
 에라토스테네스의 체
 -------------------
-> 시간 복잡도 : $O(Nlog(logN))$
+> 시간 복잡도 : $O(Nlog(logN)) ≈ O(N)$
 
 소수를 찾는 알고리즘이다. 찾는 과정은 다음과 같다.
 1. 찾으려고 하는 범위의 수들이 적힌 배열을 만든다.
 2.  idx가 2 <= idx <= sqrt(배열의 최댓값) 이라고 할때, 배열의 수 % idx == 0인 값들을 모두 지운다.
 3.  배열의 남은 값들이 소수이다.
 
-사용 예시는 다음과 같다. <[백준 1929번](https://www.acmicpc.net/problem/1929) | [내 풀이](https://www.acmicpc.net/source/61024318)>
+사용 예시는 다음과 같다. <[백준 1929번](https://www.acmicpc.net/problem/17103) | [내 풀이](https://www.acmicpc.net/source/61068430)>
 ```cpp
-#include <iostream>
-#include <vector>
-#include <cmath>
+...
 
-int main() {
-    int first, last;
-    std::cin >> first >> last;
-    std::vector<int> num_list;
-
-    for(int i = first; i <= last; i++){
-        if(i != 1)
-            num_list.push_back(i); // 원하는 수들의 배열을 생성.
-    }
-
-    int idx = 2;
-    while(idx <= sqrt(last)){
-        for(int& v : num_list){
-            if((v % idx == 0 && v != idx) && v != 0)
-                v = 0;
+int* nums = new int[1000001]; // 원하는 수만큼의 배열 생성 (0으로 초기화)
+    for(int i = 2; i <= 1000000; i++){
+        if(nums[i] == 1) continue; // 이미 처리한 경우 (= 소수가 아님으로 판단한 경우) 넘어감
+        for(int j = 2*i; j <= 1000000; j+=i){
+            nums[j] = 1; // i값이 소수였을 경우, 그 다음 배수들을 모두 1(= 소수가 아님)로 표시.
         }
-        idx++; // 2부터 sqrt(배열의 최댓값)까지의 값으로 배열의 수를 나눠 나머지가 0인 경우 모두 제거(= 소수가 아닌 수를 제거함.)
     }
-
-    for(int v : num_list){
-        if (v != 0)
-            std::cout << v << "\n"; // 결과 출력.
-    }
-}
+    
+...
 ```
