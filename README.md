@@ -8,3 +8,5 @@ PS_algorithm
 [**탐색 알고리즘**](https://github.com/Kimgooner/PS_algorithm/blob/main/Searching_algorithms.md)
 
 [**기타 알고리즘**](https://github.com/Kimgooner/PS_algorithm/blob/main/Miscellaneous_algorithms.md)
+
+[**자료 구조**](https://github.com/Kimgooner/PS_algorithm/blob/main/Data_structure.md)
