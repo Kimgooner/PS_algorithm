@@ -60,7 +60,7 @@ public:
 
 큐(Queue)
 ---------
-> img
+> ![queue_img](https://github.com/Kimgooner/PS_algorithm/assets/82828857/fe2f210a-6d1d-4679-83cb-bfcfe1b24ac5)
 >
 > blah blah
 
