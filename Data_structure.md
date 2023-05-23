@@ -58,3 +58,58 @@ public:
 };
 ```
 
+큐(Queue)
+---------
+> img
+>
+> blah blah
+
+내용.
+
+```cpp
+struct node {
+    int data;
+    node *next;
+};
+
+struct linked_queue {
+    node *front, *rear;
+    int len;
+    linked_queue() {
+        front = rear = nullptr;
+        len = 0;
+    }
+    int size() {
+        return len;
+    }
+    bool isEmpty() {
+        return len == 0;
+    }
+
+    void enqueue(int data){
+        node *node = new struct node;
+        node->data = data;
+        node->next = nullptr;
+        if(isEmpty()){
+            front = rear = node;
+        }
+        else {
+            rear->next = node;
+            rear = rear->next;
+        }
+        len++;
+    }
+
+    int dequeue() {
+        if(isEmpty()) {
+            return -1;
+        }
+        node *delNode = front;
+        int ret = delNode->data;
+        front = delNode->next;
+        delete delNode;
+        len--;
+        return ret;
+    }
+};
+```
