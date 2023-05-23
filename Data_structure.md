@@ -6,7 +6,7 @@
 -----------
 > ![stack_img](https://github.com/Kimgooner/PS_algorithm/assets/82828857/f559edfd-3a29-43d7-9c70-6a74690c0bc8)
 >
-> 예시 이미지, 스택의 push 함수와 pop 함수는 다음과 같은 기능을 한다.
+> 스택의 push 함수와 pop 함수는 다음과 같은 기능을 한다.
 
 LIFO(Last In First Out)특성을 가지는 자료 구조로, 메모리에 새로 들어오는 데이터는 메모리의 말단에 위치한다.
 
@@ -22,14 +22,14 @@ LIFO(Last In First Out)특성을 가지는 자료 구조로, 메모리에 새로
 
 **empty()** // 스택이 비어있는지 확인한다.
 
-다음은 class로 스택을 정의한 것이다. <[백준 10828번](https://www.acmicpc.net/problem/10828) | [내 풀이](https://www.acmicpc.net/source/61147713)> // 문제에선 STL vector를 사용해서 스택을 구현했다.
+다음은 STL 라이브러리를 사용하지 않고 Stack을 구현한 것이다. <[백준 10828번](https://www.acmicpc.net/problem/10828) | [내 풀이](https://www.acmicpc.net/source/61147713)> // 문제에선 STL vector를 사용해서 스택을 구현했다.
 
 ```cpp
-//#include <queue> c++에는 STL 라이브러리로 queue template를 제공한다.
+//#include <stack> c++에는 STL 라이브러리로 stack template를 제공한다.
 class Stack {
 private:
     int stack[10000];
-    int last; // 스택의 현재 탑 메모리의 위치를 가리키는 포인터. <[백준 10828번](https://www.acmicpc.net/problem/10828) | [내 풀이](https://www.acmicpc.net/source/61147713)>
+    int last; // 스택의 현재 탑 메모리의 위치를 가리키는 포인터.
 public:
     void init() {
         last = -1; // 스택초기화.
@@ -62,52 +62,67 @@ public:
 ---------
 > ![queue_img](https://github.com/Kimgooner/PS_algorithm/assets/82828857/fe2f210a-6d1d-4679-83cb-bfcfe1b24ac5)
 >
-> blah blah
+> 큐의 push 함수는 rear 위치에 데이터를 추가하고, pop 함수는 front 위치에 데이터를 제거한다.
 
-내용.
+다음은 STL 라이브러리를 사용하지 않고 Queue를 구현한 것이다. <[백준 18258번](https://www.acmicpc.net/problem/18258) | [내 풀이](https://www.acmicpc.net/source/61192878)>
 
 ```cpp
-struct node {
+// #include <queue> c++에는 STL 라이브러리로 queue template를 제공한다.
+struct Node {
     int data;
-    node *next;
+    Node* next;
 };
 
-struct linked_queue {
-    node *front, *rear;
-    int len;
-    linked_queue() {
-        front = rear = nullptr;
-        len = 0;
-    }
-    int size() {
-        return len;
-    }
-    bool isEmpty() {
-        return len == 0;
+struct Queue {
+    Node *front, *back;
+    int len = 0;
+
+    Queue(){
+        front = back = nullptr;
     }
 
-    void enqueue(int data){
-        node *node = new struct node;
-        node->data = data;
-        node->next = nullptr;
+    int size(){
+        return len;
+    }
+
+    int isEmpty(){
+        if(len == 0) return 1;
+        else return 0;
+    }
+
+    int front_data(){
+        if(isEmpty())
+            return -1;
+        return front->data;
+    }
+
+    int back_data(){
+        if(isEmpty())
+            return -1;
+        return back->data;
+    }
+
+    void push(int data){
+        Node* new_data = new struct Node;
+        new_data->data = data;
+        new_data->next = nullptr;
         if(isEmpty()){
-            front = rear = node;
+            front = back = new_data;
         }
-        else {
-            rear->next = node;
-            rear = rear->next;
+        else{
+            back->next = new_data;
+            back = back->next;
         }
         len++;
     }
 
-    int dequeue() {
-        if(isEmpty()) {
+    int pop(){
+        if(isEmpty())
             return -1;
-        }
-        node *delNode = front;
-        int ret = delNode->data;
-        front = delNode->next;
-        delete delNode;
+        Node* pop_data = front;
+        int ret = pop_data->data;
+        front = pop_data->next;
+        delete pop_data;
         len--;
         return ret;
     }
