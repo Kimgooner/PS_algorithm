@@ -25,6 +25,7 @@ LIFO(Last In First Out)특성을 가지는 자료 구조로, 메모리에 새로
 다음은 class로 스택을 정의한 것이다. <[백준 10828번](https://www.acmicpc.net/problem/10828) | [내 풀이](https://www.acmicpc.net/source/61147713)> // 문제에선 STL vector를 사용해서 스택을 구현했다.
 
 ```cpp
+//#include <queue> c++에는 STL 라이브러리로 queue template를 제공한다.
 class Stack {
 private:
     int stack[10000];
