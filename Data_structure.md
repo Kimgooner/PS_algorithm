@@ -182,10 +182,14 @@ struct Deque {
     }
 
     int front_data() {
+        if(isEmpty())
+            return -1;
         return front->data;
     }
 
     int rear_data() {
+        if(isEmpty())
+            return -1;
         return rear->data;
     }
 
