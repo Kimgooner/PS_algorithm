@@ -225,6 +225,7 @@ struct Deque {
             int ret = front->data;
             front = front->next;
             delete del_Node;
+            len--;
             return ret;
         }
     }
@@ -237,6 +238,7 @@ struct Deque {
             int ret = rear->data;
             rear = rear->prev;
             delete del_Node;
+            len--;
             return ret;
         }
     }
